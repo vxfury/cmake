@@ -103,7 +103,8 @@ ENDIF()
 # coverage check
 OPTION(ENABLE_COVERAGE_CHECK "Enable Coverage check" OFF)
 IF(ENABLE_COVERAGE_CHECK)
-	ADD_DEFINITIONS(-coverage)
+    ADD_DEFINITIONS(-coverage)
+    LINK_LIBRARIES(gcov)
 ENDIF()
 
 
