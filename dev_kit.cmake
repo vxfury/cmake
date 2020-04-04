@@ -166,9 +166,9 @@ STRING(REPLACE ";" " " CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${supported_cxx_flags
 # useful utilities
 ## redefine __FILE__ after stripping project dir
 FUNCTION(TARGET_REMOVE_SOURCE_PREFIX target)
-    ADD_DEFINITIONS(-Wno-builtin-macro-redefined)
+    TARGET_COMPILE_OPTIONS(${target} PUBLIC -Wno-builtin-macro-redefined)
     # Get source files of target
-    GET_TARGET_PROPERTY(source_files "${target}" SOURCES)
+    GET_TARGET_PROPERTY(source_files ${target} SOURCES)
     FOREACH(sourcefile ${source_files})
         # Get compile definitions in source file
         GET_PROPERTY(defs SOURCE "${sourcefile}" PROPERTY COMPILE_DEFINITIONS)
