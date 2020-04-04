@@ -100,6 +100,12 @@ IF(ENABLE_PUBLIC_SYMBOLS)
     ADD_DEFINITIONS(-DAPI_VISIBILITY)
 ENDIF()
 
+# coverage check
+OPTION(ENABLE_COVERAGE_CHECK "Enable Coverage check" OFF)
+IF(ENABLE_COVERAGE_CHECK)
+	ADD_DEFINITIONS(-coverage)
+ENDIF()
+
 
 # try conditional compilation
 OPTION(ENABLE_CHECK_C_FLAGS "Enable CCompilerFlag checking" ON)
@@ -182,12 +188,6 @@ FUNCTION(TARGET_REMOVE_SOURCE_PREFIX target)
         SET_PROPERTY(SOURCE "${sourcefile}" PROPERTY COMPILE_DEFINITIONS ${defs})
     ENDFOREACH()
 ENDFUNCTION()
-
-## coverage check
-OPTION(ENABLE_COVERAGE_CHECK "Enable Coverage check" OFF)
-IF(ENABLE_COVERAGE_CHECK)
-	ADD_DEFINITIONS(-coverage)
-ENDIF()
 
 
 # Things like checking for headers, functions, libraries, types and size of types.
